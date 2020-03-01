@@ -97,15 +97,16 @@ if __name__ == '__main__':
                     gd_save_path = im_save_path.replace('jpg', 'npy')
                     np.save(gd_save_path, points)
         else:
+            print("on est ici")
             sub_save_dir = os.path.join(save_dir, 'test')
             if not os.path.exists(sub_save_dir):
                 os.makedirs(sub_save_dir)
-            im_list = glob(os.path.join(sub_dir, '*jpg'))
-            for im_path in im_list:
-                name = os.path.basename(im_path)
-                print(name)
-                im, points = generate_data(im_path)
-                im_save_path = os.path.join(sub_save_dir, name)
+            img_directory = os.path.join(sub_dir, "images")
+            for img_name in os.listdir(img_directory):
+                print(img_name)
+                im_path = os.path.join(img_directory, img_name)
+                im, points = generate_data(im_path, sub_dir, img_name)
+                im_save_path = os.path.join(sub_save_dir, img_name)
                 im.save(im_save_path)
                 gd_save_path = im_save_path.replace('jpg', 'npy')
                 np.save(gd_save_path, points)
