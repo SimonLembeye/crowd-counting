@@ -97,7 +97,6 @@ if __name__ == '__main__':
                     gd_save_path = im_save_path.replace('jpg', 'npy')
                     np.save(gd_save_path, points)
         else:
-            print("on est ici")
             sub_save_dir = os.path.join(save_dir, 'test')
             if not os.path.exists(sub_save_dir):
                 os.makedirs(sub_save_dir)
